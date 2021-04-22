@@ -6,13 +6,114 @@
       xmlns:local="clr-namespace:GalleryWPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1" Background="Red">
+      Title="Page1">
 
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#0F2027" Offset="0"></GradientStop>
+                <GradientStop Color="#203A43" Offset="0.5"></GradientStop>
+                <GradientStop Color="#2C5364" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Name="NameTxtblockFrame" Grid.Row="0" Background="Green" FontSize="50" FontWeight="Bold" Text="saads"></TextBlock>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button 
+                Name="backBtn"
+                Content="Back" 
+                FontSize="24" 
+                FontWeight="Bold" 
+                FontFamily="Segoe UI" 
+                Background="#0F2027" 
+                Foreground="WhiteSmoke"
+                Margin="5"
+                Click="backBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <TextBlock 
+                Name="NameTxtblockFrame" 
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Margin="5"
+                FontSize="24" 
+                FontWeight="Bold"
+                FontFamily="Segoe UI" 
+                Foreground="WhiteSmoke"></TextBlock>
+        </Grid>
+
+        <Image
+            Grid.Row="1"
+            Name="fsImage"
+            Stretch="Fill"
+            Margin="10">
+        </Image>
+        <TextBlock 
+            Grid.Row="2"
+            Name="detailsTxtblck" 
+            Margin="5"
+            TextWrapping="Wrap"
+            FontFamily="Segoe UI" 
+            FontWeight="SemiBold" 
+            FontSize="16"
+            Foreground="WhiteSmoke"></TextBlock>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button 
+                Grid.Column="0" 
+                Name="prevBtn"
+                HorizontalAlignment="Right"
+                Margin="5" 
+                Width="50"
+                Content="Prev"
+                Background="#0F2027"
+                Foreground="WhiteSmoke"
+                FontWeight="SemiBold"
+                FontFamily="Segoe UI"
+                FontSize="16"
+                Click="prevBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button 
+                Grid.Column="1" 
+                Name="nextBtn"
+                HorizontalAlignment="Left"
+                Margin="5"
+                Width="50"
+                Content="Next"
+                Background="#0F2027"
+                Foreground="WhiteSmoke"
+                FontWeight="SemiBold"
+                FontFamily="Segoe UI"
+                FontSize="16"
+                Click="nextBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

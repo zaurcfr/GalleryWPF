@@ -130,10 +130,13 @@ namespace GalleryWPF
         private void GalleryLstbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Page1 page1 = new Page1();
-            GalleryLstbox.Visibility = Visibility.Hidden;
-            page1.Visibility = Visibility.Visible;
+            pg1.Visibility = Visibility.Visible;
+            pg1.Navigate(page1);
+            page1.selectedIndex = GalleryLstbox.SelectedIndex;
             var img = GalleryLstbox.SelectedItem as Image;
-            page1.NameTxtblockFrame.Text = img.Name;
+            page1.NameTxtblockFrame.Text = img.Name + " " + img.Date.ToShortDateString();
+            page1.fsImage.Source = new BitmapImage(new Uri(img.ImagePath, UriKind.Relative));
+            page1.detailsTxtblck.Text = img.Details;
         }
     }
 }

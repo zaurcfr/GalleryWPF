@@ -20,29 +20,53 @@ namespace GalleryWPF
     /// </summary>
     public partial class Page1 : Page
     {
-        private string path;
-
-        public string Path
-        {
-            get { return path; }
-            set { path = value; }
-        }
-
-        private string name;
-
-        public string NameofPhoto
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
+        public int selectedIndex { get; set; }
 
         public Page1()
         {
             InitializeComponent();
-            Window.GetWindow(this);
-            //FrameImage.Source = path;
-            NameTxtblockFrame.Text = NameofPhoto;
+
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void prevBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MainWindow main = new MainWindow();
+                var prevIndex = selectedIndex - 1;
+                selectedIndex = prevIndex;
+                var prevItem = main.GalleryLstbox.Items[prevIndex] as Image;
+                NameTxtblockFrame.Text = prevItem.Name + " " + prevItem.Date.ToShortDateString();
+                fsImage.Source = new BitmapImage(new Uri(prevItem.ImagePath, UriKind.Relative));
+                detailsTxtblck.Text = prevItem.Details;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There is no previous image");
+            }
+        }
+
+        private void nextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MainWindow main = new MainWindow();
+                var nextIndex = selectedIndex + 1;
+                selectedIndex = nextIndex;
+                var prevItem = main.GalleryLstbox.Items[nextIndex] as Image;
+                NameTxtblockFrame.Text = prevItem.Name + " " + prevItem.Date.ToShortDateString();
+                fsImage.Source = new BitmapImage(new Uri(prevItem.ImagePath, UriKind.Relative));
+                detailsTxtblck.Text = prevItem.Details;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There is no next image");
+            }
         }
     }
 }

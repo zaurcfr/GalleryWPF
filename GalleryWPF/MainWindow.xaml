@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GalleryWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1100" WindowStartupLocation="CenterScreen">
+        Title="Gallery" Height="700" Width="1100" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -85,7 +85,7 @@
         </ListBox>
 
         <Frame 
-            Grid.Row="1" Source="Page1.xaml" Name="pg1" Visibility="Hidden">
+            Grid.Row="1" Source="Page1.xaml" Name="pg1" Visibility="Hidden" NavigationUIVisibility="Hidden">
             
         </Frame>
         
